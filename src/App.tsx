@@ -6,18 +6,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Uncontrolled OnOff</h1>
+        <UncontrolledOnOffComponent />
+        <h1>Controlled OnOff</h1>
+        <ControlledOnOffComponent on={on} onChange={changeOn} />
+        {/*<UncontrolledOnOffComponent on={true} />*/}
+        {/*<UncontrolledOnOffComponent on={false} />*/}
+        <h1>Uncontrolled Accordions</h1>
+        <UncontrolledAccordion title={"Menu"} />
+        <UncontrolledAccordion title={"Users"} />
+        <h1>Uncontrolled Star Rating</h1>
+        <StarRating title={"Circle Rating"} />
       </header>
     </div>
   );
