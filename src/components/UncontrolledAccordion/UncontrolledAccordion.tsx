@@ -1,11 +1,34 @@
-import {useState} from "react";
+import React, {useReducer, useState} from "react";
+
+const TOGGLE_CONSTANT = "TOGGLE-COLLAPSED"
 
 type UncontrolledAccordionType = {
   title: string
 }
 
-function UncontrolledAccordion(props: UncontrolledAccordionType) {
-  let [collapsed, setCollapsed] = useState(true)
+type ActionType = {
+  type: string
+
+}
+
+const reducer = (state: boolean, action: ActionType) => {
+  switch (action.type) {
+    case TOGGLE_CONSTANT:
+      return  !state
+    default:
+      return state
+  }
+
+  // if (action.type === TOGGLE_CONSTANT) {
+  //   return  !state
+  // }
+  // return state
+}
+
+const UncontrolledAccordionWithoutMemo = (props: UncontrolledAccordionType) => {
+  // let [collapsed, setCollapsed] = useState(true)
+  let [collapsed, dispatch] = useReducer(reducer, false)
+
 
   const toggleButton = {
     backgroundColor: collapsed ? "grey" : "black",
@@ -26,7 +49,7 @@ function UncontrolledAccordion(props: UncontrolledAccordionType) {
     marginBottom: "20px"
   }
   const toggleMenu = () => {
-    collapsed ? setCollapsed(false) : setCollapsed(true)
+    dispatch({type: "TOGGLE-COLLAPSED"})
   }
 
   return (
@@ -41,4 +64,4 @@ function UncontrolledAccordion(props: UncontrolledAccordionType) {
   )
 }
 
-export default UncontrolledAccordion
+export const UncontrolledAccordion = React.memo(UncontrolledAccordionWithoutMemo)

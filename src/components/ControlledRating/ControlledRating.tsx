@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {Star} from "../UncontrolledRating/Star";
 
 type ControlledRatingTYpes = {
@@ -7,7 +7,7 @@ type ControlledRatingTYpes = {
   setValue: (value: number) => void
 }
 
-export const ControlledRating = (props: ControlledRatingTYpes) => {
+const ControlledRatingWithoutMemo = (props: ControlledRatingTYpes) => {
   const rating = {
     marginTop: "10px",
     display: "flex",
@@ -27,3 +27,5 @@ export const ControlledRating = (props: ControlledRatingTYpes) => {
     </div>
   )
 }
+
+export const ControlledRating = React.memo(ControlledRatingWithoutMemo)

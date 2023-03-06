@@ -1,11 +1,11 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 type PropsType = {
   on: boolean
   onChange: (on: boolean) => void
 }
 
-function ControlledOnOffComponent(props: PropsType) {
+const ControlledOnOffComponentWithoutMemo = (props: PropsType) => {
   // console.log(props.on)
   // теперь без переданных пропсов компонента берет состояние из локального стейта
   // let on  = false
@@ -67,4 +67,4 @@ function ControlledOnOffComponent(props: PropsType) {
   )
 }
 
-export default ControlledOnOffComponent
+export const ControlledOnOffComponent = React.memo(ControlledOnOffComponentWithoutMemo)

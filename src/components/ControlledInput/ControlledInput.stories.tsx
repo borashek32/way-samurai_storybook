@@ -5,4 +5,6 @@ export default {
   // component: ControlledInput,
 }
 
-export const ControlledInput = () => <input value={"nataly"} />
+export const ControlledInputWithoutMemo = () => <input value={"nataly"} />
+
+export const ControlledInput = React.memo(ControlledInputWithoutMemo)

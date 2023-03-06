@@ -1,10 +1,12 @@
+import React from "react";
+
 type StarType = {
   selected: boolean
   value: number
   onClickStar: (value: number) => void
 }
 
-export const Star = (props: StarType) => {
+const StarWithoutMemo = (props: StarType) => {
 
   const circle = {
     width: "30px",
@@ -17,3 +19,4 @@ export const Star = (props: StarType) => {
     <div style={circle} onClick={(e) => {props.onClickStar(props.value)}}></div> // 1 по клику вызывается функция clickStar
   )
 }
+export const Star = React.memo(StarWithoutMemo)
