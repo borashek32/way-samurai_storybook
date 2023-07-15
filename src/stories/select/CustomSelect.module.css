@@ -1,7 +1,16 @@
 .select {
+    width: auto;
+}
+
+.select span.main {
     border: 1px solid #000;
+    display: inline-block;
+    min-height: 20px;
+    min-width: 40px;
 }
 
 .items {
-    display: none;
+    padding: 5px;
+    position: absolute;
+    border: 1px solid red;
 }

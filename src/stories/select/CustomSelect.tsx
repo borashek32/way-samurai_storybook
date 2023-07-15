@@ -1,8 +1,9 @@
 import s from "./CustomSelect.module.css";
+import {useState} from "react";
 
 type CustomSelectType = {
   value?: string
-  onChange: () => void
+  onChange: (value: string) => void
   items: ItemType[]
 }
 type ItemType = {
@@ -22,12 +23,37 @@ export const CustomSelect = (props: CustomSelectType) => {
 
   const selectedItem = props.items.find(i => i.value === props.value)
 
+  const [active, setActive] = useState(false)
+  const showItems = () => setActive(!active)
+
+  const itemClicked = (value: string) => {
+    props.onChange(value)
+    setActive(!active)
+  }
+
   return (
     <div className={s.select}>
-      <div>{selectedItem && selectedItem.title}</div>
-      <div className={s.items}>
-        {props.items.map(item => <div key={item.value}>{item.title}</div>)}
-      </div>
+      <span
+        className={s.main}
+        onClick={showItems}
+      >
+        {selectedItem && selectedItem.title}
+      </span>
+
+      {active &&
+        <div className={s.items}>
+          {props.items.map(item => {
+            return (
+              <div
+                onClick={() => itemClicked(item.value)}
+                key={item.value}
+              >
+                {item.title}
+              </div>
+            )
+          })}
+        </div>
+      }
     </div>
   )
 }

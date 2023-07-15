@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {CustomSelect, items} from "./CustomSelect";
 import {action} from "@storybook/addon-actions";
 
@@ -13,29 +13,23 @@ type CustomSelectType = {
 
 export const CustomSelectStory = () => {
 
+  const [value, setValue] = useState("2")
+
   return (
-    <div style={{display: "flex", gap: "30px"}}>
+    <div>
       <div>
         <h1>Custom Select with Value</h1>
-        <CustomSelect onChange={action("value changed")} value={"4"} items={items}/>
+        <CustomSelect
+          onChange={setValue}
+          value={value}
+          items={items}
+        />
       </div>
 
-
-
-      <div>
-        <h1>Custom Select withoutValue</h1>
-        <CustomSelect onChange={action("value changed")} items={items}/>
-      </div>
-
-      <div>
-        <select>
-          <option value="1">one</option>
-          <option value="2">two</option>
-          <option value="3">three</option>
-          <option value="4">four</option>
-          <option value="5">five</option>
-        </select>
-      </div>
+      {/*<div>*/}
+      {/*  <h1>Custom Select withoutValue</h1>*/}
+      {/*  <CustomSelect onChange={action("value changed")} items={items}/>*/}
+      {/*</div>*/}
     </div>
   )
 }

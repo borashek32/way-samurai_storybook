@@ -12,6 +12,18 @@ function App() {
   let [value, setValue] = useState(0)
   const changeValue = (value: number) => setValue(value++)
 
+  const makeNegative = (num: number): number => {
+    // TODO
+    if (num > 0 ) {
+      return -num
+    } else if (num = 0) {
+      return 0
+    } else if (num < 0) {
+      return num
+    }
+    return undefined
+  };
+
   return (
     <div className="App">
       <header className="App-header">

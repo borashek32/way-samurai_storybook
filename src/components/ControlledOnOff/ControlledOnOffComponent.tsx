@@ -6,15 +6,6 @@ type PropsType = {
 }
 
 const ControlledOnOffComponentWithoutMemo = (props: PropsType) => {
-  // console.log(props.on)
-  // теперь без переданных пропсов компонента берет состояние из локального стейта
-  // let on  = false
-
-  // useState нужен для хранения локального состояния
-  // когда коммпонент контролируемый извне, локальный стейт не нужен
-  // let [on, setOn] = useState(true)
-
-  // every style is an object
   const onOffRow = {
     display: "flex",
     gap: "20px",
@@ -43,12 +34,6 @@ const ControlledOnOffComponentWithoutMemo = (props: PropsType) => {
     backgroundColor: props.on ? "green" : "red",
     border: "1px solid black"
   }
-
-  // при повторном клике на кнопки компонента onOff
-  // отрисовывается повторно с тем же значениемм переменной on.
-  // такого происходить не должно по идее, потому что локальный стейт не меняется.
-  // а происходит это, потому что реакт не уверен был ли стейт изменен и
-  // на всякий случай перерисовывает
 
   return (
     <div>
